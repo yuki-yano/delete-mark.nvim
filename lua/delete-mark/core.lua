@@ -81,6 +81,9 @@ M.toggle = function(command_opts)
   end
 
   local bufnr = vim.api.nvim_get_current_buf()
+  if not extmarks[bufnr] then
+    extmarks[bufnr] = {}
+  end
 
   for i, marks in ipairs(extmarks[bufnr]) do
     local open_mark = vim.api.nvim_buf_get_extmark_by_id(0, ns, marks[1], { details = true })
