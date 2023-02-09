@@ -1,6 +1,4 @@
-local render = require('delete-mark.core').render
-local toggle = require('delete-mark.core').toggle
-local eject = require('delete-mark.core').eject
+local core = require('delete-mark.core')
 
 local M = {}
 M.ns = vim.api.nvim_create_namespace('delete_mark')
@@ -59,11 +57,11 @@ M.setup = function(opts)
   vim.api.nvim_set_hl(0, 'DeleteMarkSign', opts.highlight.sign or default_opts.highlight.sign)
   vim.cmd([[sign define delete_mark text=]] .. M.opts.sign .. [[ texthl=DeleteMark]])
 
-  vim.api.nvim_create_user_command('ToggleDeleteMark', toggle, { range = true })
-  vim.api.nvim_create_user_command('EjectDeleteMark', eject, { range = '%' })
+  vim.api.nvim_create_user_command('ToggleDeleteMark', core.toggle, { range = true })
+  vim.api.nvim_create_user_command('EjectDeleteMark', core.eject, { range = '%' })
   vim.api.nvim_create_user_command('ResetDeleteMark', function()
     M.extmarks = {}
-    render()
+    core.render()
   end, { range = '%' })
 
   if M.opts.mappings.normal then
@@ -80,7 +78,7 @@ M.setup = function(opts)
     vim.api.nvim_create_autocmd(M.opts.events, {
       pattern = { '*' },
       callback = function()
-        render()
+        core.render()
       end,
     })
   end
