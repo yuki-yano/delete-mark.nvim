@@ -13,6 +13,7 @@ M.extmarks = {}
 ---@field public highlight delete-mark.Highlight
 ---@field public sign string
 ---@field public tag delete-mark.Tag
+---@field public priority number
 
 ---@class delete-mark.Mappings
 ---@field public normal string
@@ -45,6 +46,7 @@ local default_opts = {
     open = 'DELETE!: open',
     close = 'DELETE!: close',
   },
+  priority = 1000,
 }
 
 M.opts = {}

@@ -38,5 +38,6 @@ default opts:
     open = 'DELETE!: open',
     close = 'DELETE!: close',
   },
+  priority = 1000,
 }
 ```

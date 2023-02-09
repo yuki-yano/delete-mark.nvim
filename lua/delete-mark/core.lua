@@ -44,13 +44,13 @@ M.render = function()
           hl_group = 'DeleteMark',
           sign_text = opts.sign,
           sign_hl_group = 'DeleteMarkSign',
-          priority = 100,
+          priority = opts.priority,
         })
         local between_mark = vim.api.nvim_buf_set_extmark(0, ns, open_line, 0, {
           end_row = close_line - 1,
           hl_eol = true,
           hl_group = 'DeleteMarkBetween',
-          priority = 100,
+          priority = opts.priority,
         })
         local close_mark = vim.api.nvim_buf_set_extmark(0, ns, close_line - 1, indent, {
           end_col = #lines[close_line],
@@ -58,7 +58,7 @@ M.render = function()
           hl_group = 'DeleteMark',
           sign_text = opts.sign,
           sign_hl_group = 'DeleteMarkSign',
-          priority = 100,
+          priority = opts.priority,
         })
         table.insert(extmarks[bufnr], { open_mark, close_mark, between_mark })
       end
