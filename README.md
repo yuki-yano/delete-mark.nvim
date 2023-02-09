@@ -27,7 +27,7 @@ default opts:
     insert = '<C-e>',
     visual = '<C-e>',
   },
-  events = { 'TextChanged', 'BufRead', 'WinEnter' },
+  events = { 'TextChanged', 'BufRead', 'WinEnter', 'InsertLeave' },
   highlight = {
     mark = { link = 'Error' },
     sign = { link = 'Error' },
