@@ -8,9 +8,9 @@ https://user-images.githubusercontent.com/5423775/217777313-cfe51428-7646-46b3-b
 
 ## Usage
 
-Call the setup function will default map to `<C-e>` or execute `ToggleDeleteMark`.
+Call the setup function will default map to `<C-e>` or execute `DeleteMarkToggle`.
 
-To delete comments, including inner code, execute `EjectDeleteMark`.
+To delete comments, including inner code, execute `DeleteMarkEject`.
 
 ```lua
 require('delete-mark').setup({

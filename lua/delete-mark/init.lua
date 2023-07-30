@@ -57,21 +57,21 @@ M.setup = function(opts)
   vim.api.nvim_set_hl(0, 'DeleteMarkSign', opts.highlight.sign or default_opts.highlight.sign)
   vim.cmd([[sign define delete_mark text=]] .. M.opts.sign .. [[ texthl=DeleteMark]])
 
-  vim.api.nvim_create_user_command('ToggleDeleteMark', core.toggle, { range = true })
-  vim.api.nvim_create_user_command('EjectDeleteMark', core.eject, { range = '%' })
-  vim.api.nvim_create_user_command('ResetDeleteMark', function()
+  vim.api.nvim_create_user_command('DeleteMarkToggle', core.toggle, { range = true })
+  vim.api.nvim_create_user_command('DeleteMarkEject', core.eject, { range = '%' })
+  vim.api.nvim_create_user_command('DeleteMarkReset', function()
     M.extmarks = {}
     core.render()
   end, { range = '%' })
 
   if M.opts.mappings.normal then
-    vim.keymap.set({ 'n' }, M.opts.mappings.normal, ':ToggleDeleteMark<CR>', { silent = true })
+    vim.keymap.set({ 'n' }, M.opts.mappings.normal, ':DeleteMarkToggle<CR>', { silent = true })
   end
   if M.opts.mappings.insert then
-    vim.keymap.set({ 'i' }, M.opts.mappings.insert, '<Cmd>ToggleDeleteMark<CR>')
+    vim.keymap.set({ 'i' }, M.opts.mappings.insert, '<Cmd>DeleteMarkToggle<CR>')
   end
   if M.opts.mappings.visual then
-    vim.keymap.set({ 'v' }, M.opts.mappings.visual, ':ToggleDeleteMark<CR>', { silent = true })
+    vim.keymap.set({ 'x' }, M.opts.mappings.visual, ':DeleteMarkToggle<CR>', { silent = true })
   end
 
   if #M.opts.events > 0 then
